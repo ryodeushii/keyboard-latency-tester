@@ -51,6 +51,8 @@ def get_data():
         return [Sample(firmware, keyboard, settings, latency) for latency in data]
 
     csv_files = RESULTS_DIR.rglob("*.csv")
+    csv_files = csv if csv.match(/nuphy/i) for csv in csv_files
+    
     df = pd.DataFrame(chain.from_iterable(read_csv(csv) for csv in csv_files))
 
     grouped = df.groupby(["settings", "keyboard", "firmware"])
