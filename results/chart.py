@@ -48,6 +48,7 @@ def get_data():
     def read_csv(path: Path):
         firmware, keyboard, settings = get_file_metadata(path)
         data = pd.read_csv(path)["Latency (ms)"]
+
         return [Sample(firmware, keyboard, settings, latency) for latency in data]
 
     csv_files = RESULTS_DIR.rglob("*.csv")
